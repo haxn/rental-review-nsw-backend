@@ -4,6 +4,7 @@ from graphene_sqlalchemy import SQLAlchemyConnectionField, SQLAlchemyObjectType
 from database import db_session
 from models import UserModel
 from sqlalchemy import and_
+import json
 
 
 class Users(SQLAlchemyObjectType):
@@ -68,3 +69,12 @@ class MyMutations(graphene.ObjectType):
     change_username = changeUsername.Field()
 
 schema = graphene.Schema(query=Query, mutation=MyMutations, types=[Users])
+
+introspection_dict = schema.introspect()
+
+# Print the schema in the console
+print (json.dumps(introspection_dict))
+
+# Or save the schema into some file
+with open('schema.json', 'w') as fp:
+    json.dump(introspection_dict, fp)
