@@ -54,14 +54,14 @@ class changeUsername(graphene.Mutation):
 class Query(graphene.ObjectType):
     node = relay.Node.Field()
     user = SQLAlchemyConnectionField(Users)
-    find_user = graphene.Field(lambda: Users, username = graphene.String())
+    find_user = graphene.Field(lambda: Users, name = graphene.String())
     all_users = SQLAlchemyConnectionField(Users)
 
-    def resolve_find_user(self, info, username):
-        query = Users.get_query(context)
+    def resolve_find_user(self, info, name):
+        query = Users.get_query(info)
         # username = args.get('username')
         # you can also use and_ with filter() eg: filter(and_(param1, param2)).first()
-        return query.filter(UserModel.username == username).first()
+        return query.filter(UserModel.name == name).first()
 
 
 class MyMutations(graphene.ObjectType):
