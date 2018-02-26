@@ -11,6 +11,7 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True)
     name = Column(Text)
     email = Column(Text)
+    fbId = Column(Text, unique=True)
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
 class ReviewModel(Base):
