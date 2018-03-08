@@ -44,6 +44,7 @@ class createUser(graphene.Mutation):
             ## check for existing user
             query = Users.get_query(info)
             existing_user = query.filter(UserModel.fbId == user_info['fbId']).first()
+            print(existing_user)
 
             if existing_user is None:
                 db_session.add(user)
@@ -154,7 +155,7 @@ class refreshAuthToken(graphene.Mutation):
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(days=90)
                 },
                 SECRET_SALT, algorithm='HS256'
-            )
+            ).decode('utf-8')
 
             ok = True
 
@@ -204,5 +205,5 @@ schema_dict = {'data': introspection_dict}
 # print (json.dumps(schema_dict))
 
 # Or save the schema into some file
-with open('schema.json', 'w') as fp:
-    json.dump(schema_dict, fp)
+# with open('schema.json', 'w') as fp:
+#     json.dump(schema_dict, fp)

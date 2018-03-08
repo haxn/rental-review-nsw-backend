@@ -10,7 +10,6 @@
         "keep_warm": false,
         "lambda_description": "Function containing rental review nsw flask app",
         "log_level": "INFO",
-        "profile_name": "stan-personal",
         "project_name": "RentalReviewAPI",
         "runtime": "python3.6",
         "s3_bucket": "rental-review-config",
