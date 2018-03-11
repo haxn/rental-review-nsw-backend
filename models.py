@@ -12,6 +12,7 @@ class UserModel(Base):
     name = Column(Text)
     email = Column(Text)
     fbId = Column(Text, unique=True)
+    profilePicture = Column(Text, default='https://s3-ap-southeast-2.amazonaws.com/rental-review-profile-pics/default.jpeg')
     created_date = Column(DateTime, default=datetime.datetime.utcnow)
 
 class ReviewModel(Base):

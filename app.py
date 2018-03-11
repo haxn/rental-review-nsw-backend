@@ -35,7 +35,7 @@ def index():
 
 if __name__ == "__main__":
     # app.run()
-    try:
-        app.run(host='0.0.0.0', debug=True, ssl_context=(config.SSL_CERT, config.SSL_KEY))
-    except:
-        app.run()
+    # try:
+    #     app.run(host='0.0.0.0', debug=True, ssl_context=(config.SSL_CERT, config.SSL_KEY))
+    # except:
+    app.run(host='0.0.0.0', debug=True)
