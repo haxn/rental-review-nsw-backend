@@ -10,7 +10,7 @@ except Exception as e:
     DB_URI = os.environ['DB_URI']
 
 # Replace 'sqlite:///rfg.db' with your path to database
-engine = create_engine(DB_URI, convert_unicode=True)
+engine = create_engine(DB_URI, convert_unicode=True, pool_pre_ping=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
